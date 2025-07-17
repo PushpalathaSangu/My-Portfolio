@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { HiOutlineBriefcase } from "react-icons/hi";
 import {
   Menu,
   X,
@@ -97,15 +98,17 @@ export default function Header() {
 
       {/* Nav */}
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <div className="text-3xl font-extrabold">
-          <button
-            onClick={() => scrollToSection("hero")}
-            className="cursor-pointer text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 transition duration-500"
-          >
-            Portfolio
-          </button>
-        </div>
+       {/* Logo */}
+      <div className="text-3xl font-extrabold">
+  <button
+    onClick={() => scrollToSection("home")}
+    className="flex items-center gap-2 cursor-pointer text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 transition duration-500"
+  >
+    <HiOutlineBriefcase className="text-blue-400" />
+    Portfolio
+  </button>
+</div>
+
 
         {/* Right Navigation & Resume */}
         <div className="flex items-center gap-6">

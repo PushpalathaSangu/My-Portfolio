@@ -15,15 +15,16 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <title>My Portfolio | Web Developer</title>
+    <title>My Portfolio</title>
     
     <style>
-      /* Basic styling for the loading state */
+      /* Basic styling */
       body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
         background-color: #f8f9fa;
         color: #333;
+        /* Removed overflow: hidden to enable scrolling */
       }
       
       #root {
@@ -32,40 +33,135 @@
         flex-direction: column;
       }
       
-      /* Loading animation */
+      /* Loading container - now positioned absolutely so it won't affect scroll */
       .loading-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
         flex-direction: column;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        z-index: 9999; /* Ensure it's above everything */
       }
       
-      .loading-spinner {
-        width: 50px;
-        height: 50px;
-        border: 5px solid #f3f3f3;
-        border-top: 5px solid #3498db;
+      /* Rest of your loader styles remain the same */
+      .loader {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+      }
+      
+      .loader-inner {
+        position: absolute;
+        border: 4px solid transparent;
         border-radius: 50%;
-        animation: spin 1s linear infinite;
+        animation: rotate 2s linear infinite;
       }
       
-      @keyframes spin {
+      .loader-inner:nth-child(1) {
+        width: 100%;
+        height: 100%;
+        border-top-color: #60a5fa;
+        border-bottom-color: #60a5fa;
+      }
+      
+      .loader-inner:nth-child(2) {
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+        border-left-color: #2dd4bf;
+        border-right-color: #2dd4bf;
+        animation-direction: reverse;
+      }
+      
+      .loader-inner:nth-child(3) {
+        width: 60%;
+        height: 60%;
+        top: 20%;
+        left: 20%;
+        border-top-color: #60a5fa;
+        border-bottom-color: #2dd4bf;
+      }
+      
+      @keyframes rotate {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #2c3e50;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 20px;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+      
+      @keyframes pulse {
+        0% { opacity: 0.6; }
+        50% { opacity: 1; }
+        100% { opacity: 0.6; }
+      }
+      
+      .progress-bar {
+        width: 200px;
+        height: 4px;
+        background: rgba(0,0,0,0.1);
+        border-radius: 2px;
+        margin-top: 20px;
+        overflow: hidden;
+      }
+      
+      .progress {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, #60a5fa, #2dd4bf);
+        animation: progress 1s ease-in-out infinite;
+      }
+      
+      @keyframes progress {
+        0% { width: 0; margin-left: 0; }
+        50% { width: 100%; margin-left: 0; }
+        100% { width: 0; margin-left: 100%; }
       }
     </style>
   </head>
   <body>
     <!-- Loading state that will be replaced by React -->
     <div id="root">
-      <div class="loading-container">
-        <div class="loading-spinner"></div>
-        <p>Loading Portfolio...</p>
+      <!-- Your actual app content will go here -->
+    </div>
+    
+    <!-- Loading overlay - will be removed when React mounts -->
+    <div class="loading-container" id="loading-overlay">
+      <div class="loader">
+        <div class="loader-inner"></div>
+        <div class="loader-inner"></div>
+        <div class="loader-inner"></div>
+      </div>
+      <div class="loading-text">Loading Portfolio</div>
+      <div class="progress-bar">
+        <div class="progress"></div>
       </div>
     </div>
     
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Script to remove loader when app mounts -->
+    <script>
+      // This will be replaced by your React app's mounting
+      // For demonstration, we'll simulate removal after 3 seconds
+      setTimeout(() => {
+        document.getElementById('loading-overlay').style.display = 'none';
+      }, 3000);
+    </script>
     
     <!-- Basic analytics (optional) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
