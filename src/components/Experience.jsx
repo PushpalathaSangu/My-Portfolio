@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase, Code, Cpu, Server } from "lucide-react";
+import { Code, Cpu, BookOpen, Users, Mic2 } from "lucide-react";
 
 export default function Experience() {
   const experiences = [
@@ -27,16 +27,41 @@ export default function Experience() {
         "Increased user engagement by 25%"
       ]
     },
+    // Current roles added here
     {
-      role: "Backend Intern",
-      company: "Cloud Systems",
-      description: "Developed REST APIs with Node.js and Express. Optimized database queries and implemented authentication systems.",
-      icon: <Server className="text-purple-400" />,
-      duration: "2019-2020",
+      role: "Technical Intern",
+      company: "LearnSquare",
+      description: "Currently interning as a full-stack developer, contributing to educational technology solutions and platform development.",
+      icon: <BookOpen className="text-purple-400" />,
+      duration: "2023-Present",
       highlights: [
-        "Reduced server costs by 20%",
-        "Implemented JWT authentication",
-        "Wrote comprehensive API docs"
+        "Developing interactive learning modules",
+        "Implementing RESTful APIs",
+        "Collaborating with cross-functional teams"
+      ]
+    },
+    {
+      role: "HHO Executive Member",
+      company: "Student Organization",
+      description: "Active member of the student executive committee, organizing technical and non-technical events.",
+      icon: <Users className="text-amber-400" />,
+      duration: "2022-Present",
+      highlights: [
+        "Organized hackathons with 100+ participants",
+        "Managed event logistics",
+        "Mentored junior members"
+      ]
+    },
+    {
+      role: "Class Representative",
+      company: "University",
+      description: "Served as liaison between faculty and students, coordinating academic activities and feedback sessions.",
+      icon: <Mic2 className="text-green-400" />,
+      duration: "2021-2023",
+      highlights: [
+        "Improved student-faculty communication",
+        "Organized study sessions",
+        "Resolved academic concerns"
       ]
     }
   ];
@@ -54,18 +79,18 @@ export default function Experience() {
         >
           <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">
-              Experience
+              Professional Journey
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            My professional journey and contributions
+            My work experience and leadership roles
           </p>
         </motion.div>
 
         {/* Experience Timeline */}
         <div className="space-y-8 relative">
           {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400/30 to-teal-400/30 -z-1"></div>
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400/30 via-purple-400/30 to-teal-400/30 -z-1"></div>
           
           {experiences.map((exp, index) => (
             <motion.div
@@ -76,23 +101,36 @@ export default function Experience() {
               viewport={{ once: true }}
               className="relative pl-16"
             >
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-gradient-to-r from-blue-400 to-teal-400 flex items-center justify-center">
+              {/* Timeline dot with gradient border */}
+              <div className={`absolute left-0 top-1 w-6 h-6 rounded-full flex items-center justify-center 
+                ${index <= 2 ? 'bg-gradient-to-r from-blue-400 to-teal-400' : 
+                   index === 3 ? 'bg-gradient-to-r from-amber-400 to-yellow-400' :
+                   'bg-gradient-to-r from-green-400 to-emerald-400'}`}>
                 <div className="w-4 h-4 rounded-full bg-gray-900"></div>
               </div>
               
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-lg hover:shadow-blue-500/20 transition-all duration-300">
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 group">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-full bg-gradient-to-r from-blue-400/20 to-teal-400/20">
+                  <div className={`p-3 rounded-full 
+                    ${index <= 2 ? 'bg-gradient-to-r from-blue-400/20 to-teal-400/20' : 
+                       index === 3 ? 'bg-gradient-to-r from-amber-400/20 to-yellow-400/20' :
+                       'bg-gradient-to-r from-green-400/20 to-emerald-400/20'}`}>
                     {exp.icon}
                   </div>
                   <div className="flex-1">
                     <div className="flex justify-between items-start flex-wrap gap-2">
                       <div>
-                        <h3 className="text-xl font-bold text-white">{exp.role}</h3>
-                        <p className="text-gray-400">{exp.company}</p>
+                        <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                          {exp.role}
+                        </h3>
+                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                          {exp.company}
+                        </p>
                       </div>
-                      <span className="text-sm text-gray-400 bg-gray-800 px-3 py-1 rounded-full">
+                      <span className={`text-sm px-3 py-1 rounded-full 
+                        ${index <= 2 ? 'bg-blue-900/30 text-blue-300' : 
+                           index === 3 ? 'bg-amber-900/30 text-amber-300' :
+                           'bg-green-900/30 text-green-300'}`}>
                         {exp.duration}
                       </span>
                     </div>
@@ -100,8 +138,10 @@ export default function Experience() {
                     
                     <ul className="mt-4 space-y-2">
                       {exp.highlights.map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-400">
-                          <span className="text-teal-400">▹</span>
+                        <li key={i} className="flex items-start gap-2 text-gray-400 group-hover:text-gray-300 transition-colors">
+                          <span className={`${index <= 2 ? 'text-teal-400' : 
+                                         index === 3 ? 'text-amber-400' :
+                                         'text-green-400'}`}>▹</span>
                           <span>{highlight}</span>
                         </li>
                       ))}

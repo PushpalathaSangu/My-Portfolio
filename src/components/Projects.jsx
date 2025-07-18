@@ -1,50 +1,48 @@
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import watImage from "../assets/image1.jpg"; // Import your images like this
-import speakshipImage from "../assets/image1.jpg";
-import linkedinImage from "../assets/image1.jpg";
+
+
 
 const projects = [
   {
     title: "WAT",
-    description: "An Intelligence System that processes user uploaded documents and contextually responds to user queries.",
-    technologies: ["Next.js", "FastAPI", "PyPDF", "AWS S3", "Langchain+Gemini"],
-    github: "#",
+    description: "A web platform for conducting Weekly Assessment Tests, allowing users to upload documents and receive intelligent, context-aware feedback using AI.",
+    technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Gemini API"],
+    github: "https://github.com/PushpalathaSangu/WAT-MiniProject",
     live: "#",
-    image: watImage // Use the imported image directly
+    image: watImage
   },
   {
     title: "SpeakShip",
-    description: "A system that filters out background noise from audio, improving audio clarity by up to 35% based on SNR and PESO metrics.",
-    technologies: ["PyTorch", "Librosa", "CNN", "Scikit-learn"],
-    github: "#",
-    live: "#",
-    image: speakshipImage
-  },
-  {
-    title: "LinkedIn Clone",
-    description: "A complete LinkedIn clone with user profiles, connections, and post functionality.",
-    technologies: ["React", "Firebase", "Node.js", "Tailwind CSS"],
-    github: "#",
-    live: "#"
+    description: "SpeakShip is an on-demand delivery system that manages package deliveries from request to confirmation.It supports real-time tracking, secure logins, and smart price estimation.",
+    technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Gemini API", "Socket.io"],
+    github: "https://github.com/PushpalathaSangu/SpeakShip",
+    live: "https://speak-ship.vercel.app/"
   
   },
   {
-    title: "RRTS",
-    description: "Railway reservation and tracking system with real-time updates.",
-    technologies: ["Java", "Spring Boot", "MySQL", "React"],
-    github: "#",
+    title: "LinkedIn Clone",
+    description: "A full-featured LinkedIn clone with user authentication, profile management, networking (connections), and post functionality.",
+    technologies: ["Next.js", "Node.js", "Express.js", "MongoDB"],
+    github: "https://github.com/PushpalathaSangu/LinkedinClone",
     live: "#"
-    // No image specified - will use fallback
+  },
+  {
+    title: "RRTS",
+    description: "Road Repair and Tracking System for city municipalities to manage complaints, track repair status, and optimize resource allocation.",
+    technologies: ["JSP", "HTML", "CSS", "JDBC", "MySQL", "Servlets"],
+    github: "https://github.com/PushpalathaSangu/RRTS",
+    live: "#"
   },
   {
     title: "Portfolio Website",
-    description: "My personal portfolio website showcasing my projects and skills.",
-    technologies: ["React", "Tailwind CSS", "Framer Motion"],
-    github: "#",
-    live: "#"
-    // No image specified - will use fallback
+    description: "My personal portfolio website to showcase my projects, skills, and achievements in web development and software engineering.",
+    technologies: ["React.js", "Tailwind CSS"],
+    github: "https://github.com/PushpalathaSangu/My-Portfolio",
+    live: "https://my-portfolio-alpha-one-99.vercel.app/"
   }
 ];
+
 export default function Projects() {
   return (
     <section 
@@ -110,22 +108,29 @@ export default function Projects() {
                   ))}
                 </div>
                 
-                <div className="flex space-x-4">
-                  <a
-                    href={project.github}
-                    className="flex items-center text-gray-400 hover:text-blue-400 transition-colors duration-200"
-                  >
-                    <FaGithub className="mr-2" />
-                    GitHub
-                  </a>
-                  <a
-                    href={project.live}
-                    className="flex items-center text-gray-400 hover:text-teal-400 transition-colors duration-200"
-                  >
-                    <FaExternalLinkAlt className="mr-2" />
-                    Live Demo
-                  </a>
-                </div>
+                <div className="flex flex-wrap gap-3">
+  {/* GitHub Button */}
+  <a
+    href={project.github}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-blue-800 hover:to-teal-800 text-white font-medium py-2 px-4 rounded-full text-sm shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg flex items-center gap-2"
+  >
+    <FaGithub className="text-lg" />
+    <span>Github</span>
+  </a>
+
+  {/* Live Demo Button */}
+  <a
+    href={project.live}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-400 hover:to-teal-400 text-white font-medium py-2 px-4 rounded-full text-sm shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg flex items-center gap-2"
+  >
+    <FaExternalLinkAlt className="text-lg" />
+    <span>Live Demo</span>
+  </a>
+</div>
               </div>
             </div>
           ))}

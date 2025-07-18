@@ -162,7 +162,7 @@ export default function Skills() {
               x: ["0%", "-100%"],
             }}
             transition={{
-              duration: 30,
+              duration: 40,
               ease: "linear",
               repeat: Infinity,
             }}
